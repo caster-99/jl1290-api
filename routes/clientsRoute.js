@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 
-//Get's
+
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -11,6 +11,8 @@ var connection = mysql.createConnection({
   database: 'inventario-jl1290',
 });
 
+
+//GET clientes
 router.get('/', (req, res) => {
   const sql = 'SELECT * FROM clientes;';
   connection.query(sql, (error, results) => {

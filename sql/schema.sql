@@ -53,8 +53,9 @@ CREATE TABLE Ubicaciones (
 CREATE TABLE Compras (
 	venta INTEGER NOT NULL,
 	producto INTEGER NOT NULL,
-	precio DECIMAL ( 10, 2 ) CHECK ( precio >= 0 ) NOT NULL,
+	precio_unitario DECIMAL ( 10, 2 ) CHECK ( precio_unitario >= 0 ) NOT NULL,
 	cantidad INTEGER CHECK ( cantidad > 0 ) NOT NULL,
+	precio DECIMAL ( 10, 2 ) CHECK ( precio >= 0 ) NOT NULL, 
 	PRIMARY KEY ( producto, venta ),
 	FOREIGN KEY ( producto ) REFERENCES Productos ( id ) ON DELETE RESTRICT ON UPDATE CASCADE,
 FOREIGN KEY ( venta ) REFERENCES Ventas ( id ) ON DELETE CASCADE ON UPDATE CASCADE 

@@ -1,11 +1,48 @@
 //Endpoint ventas
 const express = require('express');
-const router=express.Router();
+const router = express.Router();
+const mysql = require('mysql');
 
-//get's
-router.get('/', (req, res) => {
-  res.send('Muestra todas las ventas');
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '1q2w',
+  database: 'inventario-jl1290',
 });
+
+
+//GET ventas
+router.get('/', (req, res) => {
+  const sql = 'SELECT * FROM ventas;';
+  connection.query(sql, (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.json(results);
+    } else {
+      res.send('No hay resultados');
+    }
+  });
+});
+
+//GET venta específica
+
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  const sql = ` SELECT * FROM ventas WHERE id=${id}`;
+
+  connection.query(sql, (error, result) => {
+    if (error) throw error;
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.send('No hay resultados');
+    }
+  });
+});
+
+
+
+
 
 //Productos de una venta
 router.get('/sales/:sId/products/:pId', (req, res) => {
@@ -16,48 +53,71 @@ router.get('/sales/:sId/products/:pId', (req, res) => {
   });
 });
 
-router.get('/sell', (req, res) => {
-  res.send('Realizar venta');
-});
+
+
+
 
 //Post
 
-router.post('/', (req, res) => {
-  const body = req.body;
-  res.json({
-    message:"Creación de venta",
-    data:body
+router.post('/add', (req, res) => {
+  const sql ='INSERT INTO ventas SET ?';
+
+  const obj={
+    cliente: req.body.cliente
+  }
+
+  connection.query(sql, obj, error => {
+    if (error) throw error;
+    res.json({
+      message: 'Actualizado el cliente',
+      data:obj
+    });
   });
+
 });
 
 //Patch
-router.patch('/:id', (req, res) => {
-  const {id}=req.params;
+router.patch('/update/:id', (req, res) => {
+  const { id } = req.params;
   const body = req.body;
+
   res.json({
-    message:"Actualizado la venta",
-    data:body,
-    id
+    message: 'Actualizada la venta',
+    data: body,
+    id,
   });
 });
 
 //Put
-router.put('/:id', (req, res) => {
-  const {id}=req.params;
-  const body = req.body;
-  res.json({
-    message:"Actualizado la venta",
-    data:body,
-    id
+router.put('/update/:id', (req, res) => {
+  const { id } = req.params;
+  const {cliente} = req.body;
+  const sql =`UPDATE ventas SET cliente='${cliente}' WHERE id='${id}';`;
+
+  connection.query(sql, error => {
+    if (error) throw error;
+    res.json({
+      message: 'Venta actualizada',
+      data: cliente,
+      id,
+    });
   });
 });
+
+
 //Delete
-router.delete('/:id', (req, res) => {
-  const {id}=req.params;
-  res.json({
-    message:"Eliminada la venta",
-    id
+router.delete('/delete/:id', (req, res) => {
+  const { id } = req.params;
+  const sql = ` DELETE FROM ventas WHERE id=${id}`;
+
+  connection.query(sql, error => {
+    if (error) throw error;
+    res.json({
+      message: 'Venta eliminada',
+      id,
+    });
   });
+
 });
 
 module.exports=router;
