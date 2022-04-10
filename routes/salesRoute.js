@@ -69,7 +69,7 @@ router.post('/add', (req, res) => {
   connection.query(sql, obj, error => {
     if (error) throw error;
     res.json({
-      message: 'Actualizado el cliente',
+      message: 'Venta creada',
       data:obj
     });
   });

@@ -55,7 +55,10 @@ router.post('/add', (req, res) => {
 
   connection.query(sql, obj, error => {
     if (error) throw error;
-    res.send('Cliente creado');
+    res.json({
+      message: 'Cliente creado',
+      data:obj
+    });
   });
 
 
