@@ -11,11 +11,49 @@ var connection = mysql.createConnection({
   database: 'inventario-jl1290',
 });
 
+// //Productos de una venta especifica
+// router.get('/:cId/:vId', (req, res) => {
+//   const { cId } = req.params;
+//   const { vId } = req.params;
+
+//   var cust;
+//   var purchase;
+
+//   const sql = `SELECT cedula, 'Nombre Cliente' FROM viewcompras  WHERE cedula='${cId}' AND id='${vId}';`;
+//   connection.query(sql, (error, result) => {
+//     if (error) throw error;
+//     cust = result;
+//     // if (result.length > 0) {
+//     //   cust=result;
+//     // } else {
+//     //   res.send('No hay resultados');
+//     // }
+//   });
+
+//   const sqlCust = `SELECT id, fecha, producto, codigo, nombre, precio_unitario, cantidad, precio FROM viewcompras  WHERE cedula='${cId}' AND id='${vId}';`;
+//   connection.query(sqlCust, (error, result) => {
+//     if (error) throw error;
+//     purchase = result;
+//     // if (result.length > 0) {
+//     //   purchase=result;
+//     // } else {
+//     //   res.send('No hay resultados');
+//     // }
+//   });
+
+//   res.json({
+//     "cust": cust,
+//     purchase: purchase,
+//   });
+// });
+
+
 //Productos de una venta especifica
 router.get('/:cId/:vId', (req, res) => {
   const { cId } = req.params;
   const { vId } = req.params;
-  const sql=`SELECT * FROM viewcompras  WHERE cedula='${cId}' AND id='${vId}';`;
+
+  const sql = `SELECT * FROM viewcompras  WHERE cedula='${cId}' AND id='${vId}';`;
   connection.query(sql, (error, result) => {
     if (error) throw error;
     if (result.length > 0) {
@@ -24,12 +62,14 @@ router.get('/:cId/:vId', (req, res) => {
       res.send('No hay resultados');
     }
   });
+
+
 });
 
 //Productos de una venta
 router.get('/:sId', (req, res) => {
   const { sId } = req.params; //de todos los parametros solo me importa el id
-  const sql=`SELECT * FROM viewcompras  WHERE cedula='${sId}';`;
+  const sql = `SELECT * FROM viewcompras  WHERE cedula='${sId}';`;
   connection.query(sql, (error, result) => {
     if (error) throw error;
     if (result.length > 0) {
@@ -40,28 +80,24 @@ router.get('/:sId', (req, res) => {
   });
 });
 
-
-
 //Post
 
 router.post('/add', (req, res) => {
-  const sql ='INSERT INTO compras SET ?';
+  const sql = 'INSERT INTO compras SET ?';
 
-  const obj={
-    venta:req.body.venta,
-    producto:req.body.producto,
-    cantidad:req.body.cantidad
-  }
+  const obj = {
+    venta: req.body.venta,
+    producto: req.body.producto,
+    cantidad: req.body.cantidad,
+  };
 
-  connection.query(sql, obj, error => {
+  connection.query(sql, obj, (error) => {
     if (error) throw error;
     res.json({
       message: 'Compra creada',
-      data:obj,
+      data: obj,
     });
   });
-
-
 });
 
 //Patch
@@ -79,11 +115,11 @@ router.patch('/update/:id', (req, res) => {
 //Put
 router.put('/update/:vId/:pId', (req, res) => {
   const { vId, pId } = req.params;
-  const {cantidad} = req.body;
+  const { cantidad } = req.body;
   // const {producto} = req.body;
-  const sql =`UPDATE compras SET cantidad='${cantidad}' WHERE venta='${vId}' AND venta='${pId}';`;
+  const sql = `UPDATE compras SET cantidad='${cantidad}' WHERE venta='${vId}' AND venta='${pId}';`;
 
-  connection.query(sql, error => {
+  connection.query(sql, (error) => {
     if (error) throw error;
     res.json({
       message: 'Compra actualizada',
@@ -94,13 +130,12 @@ router.put('/update/:vId/:pId', (req, res) => {
   });
 });
 
-
 //Delete
 router.delete('/delete/:vId/:pId', (req, res) => {
-  const { vId, pId} = req.params;
+  const { vId, pId } = req.params;
   const sql = ` DELETE FROM compras WHERE venta='${vId}' AND  producto='${pId}'`;
 
-  connection.query(sql, error => {
+  connection.query(sql, (error) => {
     if (error) throw error;
     res.json({
       message: 'Venta eliminada',
@@ -108,8 +143,6 @@ router.delete('/delete/:vId/:pId', (req, res) => {
       pId,
     });
   });
-
 });
 
-
-module.exports=router;
+module.exports = router;
