@@ -127,6 +127,21 @@ router.delete('/delete/:id', (req, res) => {
 
 });
 
+// //@type   POST
+// //route for post data
+// app.post("/post", upload.single('image'), (req, res) => {
+//   if (!req.file) {
+//       console.log("No file upload");
+//   } else {
+//       console.log(req.file.filename)
+//       var imgsrc = 'http://127.0.0.1:3000/images/' + req.file.filename
+//       var insertData = "INSERT INTO users_file(file_src)VALUES(?)"
+//       db.query(insertData, [imgsrc], (err, result) => {
+//           if (err) throw err
+//           console.log("file uploaded")
+//       })
+//   }
+// });
 
 module.exports = router;
 
