@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+// const productos = require('./productsRoute');
 
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -13,7 +14,7 @@ var connection = mysql.createConnection({
 
 //GET ventas
 router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM ventas;';
+  const sql = 'SELECT * FROM viewventas;';
   connection.query(sql, (error, results) => {
     if (error) throw error;
     if (results.length > 0) {
@@ -28,7 +29,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  const sql = ` SELECT * FROM ventas WHERE id=${id}`;
+  const sql = ` SELECT * FROM viewventas WHERE id=${id}`;
 
   connection.query(sql, (error, result) => {
     if (error) throw error;
@@ -45,11 +46,16 @@ router.get('/:id', (req, res) => {
 
 
 //Productos de una venta
-router.get('/sales/:sId/products/:pId', (req, res) => {
-  const { sId, pId } = req.params; //de todos los parametros solo me importa el id
-  res.json({
-    sId,
-    pId,
+router.get('/:sId/products', (req, res) => {
+  const { sId } = req.params; //de todos los parametros solo me importa el id
+  const sql=`SELECT id, fecha, producto, codigo, nombre, precio_unitario, cantidad, precio FROM viewcompras WHERE id=${sId}`;
+  connection.query(sql, (error, result) => {
+    if (error) throw error;
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.send('No hay resultados');
+    }
   });
 });
 

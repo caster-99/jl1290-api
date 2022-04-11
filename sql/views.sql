@@ -8,36 +8,36 @@ p.codigo,
 p.nombre,
 co.precio_unitario,
 co.cantidad,
-co.precio 
+co.precio
 FROM
 	clientes c,
 	ventas v,
 	compras co,
-	productos p 
+	productos p
 WHERE
-	c.cedula = v.cliente 
-	AND v.id = co.venta 
-	AND co.producto = p.id 
+	c.cedula = v.cliente
+	AND v.id = co.venta
+	AND co.producto = p.id
 GROUP BY
 	`c`.`cedula`,
 	`v`.`id`,
 	`co`.`producto`;
-	
+
 CREATE VIEW `ViewVentas` AS SELECT
 c.cedula,
 c.nombre AS 'Nombre Cliente',
 v.id,
 v.fecha,
-sum( co.precio ) 
+sum( co.precio )
 FROM
 	clientes c,
 	ventas v,
 	compras co,
-	productos p 
+	productos p
 WHERE
-	c.cedula = v.cliente 
-	AND v.id = co.venta 
-	AND co.producto = p.id 
+	c.cedula = v.cliente
+	AND v.id = co.venta
+	AND co.producto = p.id
 GROUP BY
 	`c`.`cedula`,
 	`v`.`id`;

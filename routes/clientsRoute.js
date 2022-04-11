@@ -57,7 +57,7 @@ router.post('/add', (req, res) => {
     if (error) throw error;
     res.json({
       message: 'Cliente creado',
-      data:obj
+      data:obj,
     });
   });
 
