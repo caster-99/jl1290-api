@@ -64,23 +64,11 @@ router.post('/add', (req, res) => {
 
 });
 
-//Patch
-router.patch('/update/:id', (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
-
-  res.json({
-    message: 'Teléfono actualizado',
-    data: body,
-    id,
-  });
-});
-
 //Put
-router.put('/update/:id', (req, res) => {
-  const { id } = req.params;
+router.put('/update/:id/:phone', (req, res) => {
+  const { id, phone } = req.params;
   const {telefono} = req.body;
-  const sql =`UPDATE telefonos SET telefono='${telefono}' WHERE cliente='${id}';`;
+  const sql =`UPDATE telefonos SET telefono='${telefono}' WHERE cliente='${id}' AND telefono='${phone}';`;
 
   connection.query(sql, error => {
     if (error) throw error;
