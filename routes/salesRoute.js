@@ -10,10 +10,15 @@ router.get('/',async (req, res) => {
   res.json(sales);
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params; //de todos los parametros solo me importa el id
+router.get('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params; //de todos los parametros solo me importa el id
   const sale = await service.findOne(id);
   res.json(sale);
+  } catch (error) {
+    next(error);
+  }
+
 });
 
 //Post
