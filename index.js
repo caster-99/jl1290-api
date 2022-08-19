@@ -6,8 +6,13 @@ const port = 3000;
 app.use(express.json());
 
 app.listen(port, () => {
-  console.log('Port: ' + port);
-  console.log("Conexión exitosa");
+  try {
+    console.log('Port: ' + port);
+    console.log("Conexión exitosa");
+  } catch (error) {
+    console.log(error.message);
+  }
+
 });
 
 routerApi(app);

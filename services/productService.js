@@ -18,20 +18,32 @@ class ProductsService {
   }
 
   create(data) {
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data,
-    };
-    this.products.push(newProduct);
-    return newProduct;
+    return new Promise((resolve) => {
+      const newProduct = {
+        id: faker.datatype.uuid(),
+        ...data,
+      };
+      this.products.push(newProduct);
+      setTimeout(() => {
+        resolve(newProduct);
+      }, 2000);
+    });
   }
 
   find() {
-    return this.products;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.products);
+      }, 2000);
+    });
   }
 
   findOne(id) {
-    return this.products.find((item) => item.id === id);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.products.find((item) => item.id === id));
+      }, 2000);
+    });
   }
 
   update(id, changes) {
@@ -39,21 +51,29 @@ class ProductsService {
     if (index === -1) {
       throw new Error('No se encontró el producto.');
     }
-    const product = this.products[index];
-    this.products[index] = {
-      ...product,
-      ...changes,
-    };
-    return this.products[index];
+    return new Promise((resolve) => {
+      const product = this.products[index];
+      this.products[index] = {
+        ...product,
+        ...changes,
+      };
+      setTimeout(() => {
+        resolve(this.products[index]);
+      },2000);
+    });
   }
 
-  delete(id) {
+  async delete(id) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('No se encontró el producto.');
     }
-    this.products.splice(index, 1);
-    return { id };
+    return new Promise((resolve) => {
+      this.products.splice(index, 1);
+      setTimeout(()=>{
+        resolve(id);
+      },2000)
+    });
   }
 }
 module.exports = ProductsService;

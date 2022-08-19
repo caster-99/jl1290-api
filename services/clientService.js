@@ -11,13 +11,13 @@ class ClientsService {
     for (let i = 0; i < limit; i++) {
       this.clients.push({
         id: faker.datatype.number({ min: 1000000 }),
-        name: faker.name.firstName()+(" ")+faker.name.lastName(),
-        address: ((faker.address.country())+(" ")+(faker.address.cityName()))
+        name: faker.name.firstName() + ' ' + faker.name.lastName(),
+        address: faker.address.country() + ' ' + faker.address.cityName(),
       });
     }
   }
 
-  create(data) {
+  async create(data) {
     const newClient = {
       ...data,
     };
@@ -26,14 +26,18 @@ class ClientsService {
   }
 
   find() {
-    return this.clients;
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.clients);
+      }, 2000);
+    });
   }
 
-  findOne(id) {
+  async findOne(id) {
     return this.clients.find((item) => item.id === id);
   }
 
-  update(id, changes) {
+  async update(id, changes) {
     const index = this.clients.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('No se encontró el cliente.');
@@ -46,7 +50,7 @@ class ClientsService {
     return this.clients[index];
   }
 
-  delete(id) {
+  async delete(id) {
     const index = this.clients.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('No se encontró el cliente.');

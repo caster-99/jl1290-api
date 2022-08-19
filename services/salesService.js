@@ -18,16 +18,20 @@ class SalesService {
   }
 
   create(data) {
-    const newSale = {
-      id: faker.datatype.uuid(),
-      ...data,
-    };
-    this.sales.push(newSale);
-    return newSale;
+    return new Promise((resolve)=>{
+      const newSale = {
+        id: faker.datatype.uuid(),
+        ...data,
+      };
+      this.sales.push(newSale);
+      setTimeout(()=>{
+        resolve(newSale)
+      },2000);
+    });
   }
 
   find() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(this.sales);
       }, 2000);
@@ -35,7 +39,11 @@ class SalesService {
   }
 
   findOne(id) {
-    return this.sales.find((item) => item.id === id);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.sales.find((item) => item.id === id));
+      }, 2000);
+    });
   }
 
   update(id, changes) {
@@ -43,12 +51,17 @@ class SalesService {
     if (index === -1) {
       throw new Error('No se encontró la venta.');
     }
-    const sale = this.sales[index];
+    return new Promise((resolve)=>{
+      const sale = this.sales[index];
     this.sales[index] = {
       ...sale,
       ...changes,
     };
-    return this.sales[index];
+    setTimeout(()=>{
+      resolve(this.sales[index])
+    },2000);
+    })
+
   }
 
   delete(id) {
@@ -56,8 +69,12 @@ class SalesService {
     if (index === -1) {
       throw new Error('No se encontró la venta.');
     }
-    this.sales.splice(index, 1);
-    return { id };
+    return new Promise((resolve) => {
+      this.sales.splice(index, 1);
+      setTimeout(()=>{
+        resolve(id);
+      },2000)
+    });
   }
 }
 module.exports = SalesService;
