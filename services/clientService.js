@@ -7,7 +7,7 @@ class ClientsService {
   }
 
   generate() {
-    const limit = 10; //uso esto para que me muestre la cantidad que mandan por el url, si no viene nada, que genere 10, hence ||10
+    const limit = 10;
     for (let i = 0; i < limit; i++) {
       this.clients.push({
         id: faker.datatype.number({ min: 1000000 }),
@@ -17,7 +17,7 @@ class ClientsService {
     }
   }
 
-  async create(data) {
+  create(data) {
     const newClient = {
       ...data,
     };
@@ -26,37 +26,50 @@ class ClientsService {
   }
 
   find() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(this.clients);
       }, 2000);
     });
   }
 
-  async findOne(id) {
-    return this.clients.find((item) => item.id === id);
+  findOne(id) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.clients.find((item) => item.id === id));
+      }, 2000);
+    });
   }
 
-  async update(id, changes) {
+  update(id, changes) {
     const index = this.clients.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('No se encontró el cliente.');
     }
-    const sale = this.clients[index];
-    this.clients[index] = {
-      ...sale,
-      ...changes,
-    };
-    return this.clients[index];
+    return new Promise((resolve) => {
+      const sale = this.clients[index];
+      this.clients[index] = {
+        ...sale,
+        ...changes,
+      };
+      setTimeout(() => {
+        resolve(this.clients[index]);
+      }, 2000);
+    });
   }
 
-  async delete(id) {
+  delete(id) {
     const index = this.clients.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('No se encontró el cliente.');
     }
-    this.clients.splice(index, 1);
-    return { id };
+    return new Promise((resolve) => {
+      this.clients.splice(index, 1);
+      setTimeout(() => {
+        resolve(id);
+      }, 2000);
+    });
+
   }
 }
 module.exports = ClientsService;

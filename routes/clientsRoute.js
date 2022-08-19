@@ -49,9 +49,16 @@ router.patch('/update/:id', async (req, res) => {
 
 //Delete
 router.delete('/delete/:id', async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
   const client= await service.delete(id);
   res.json(client);
+  } catch (error) {
+    res.status(404).json({
+      message:error.message
+    });
+  }
+
 });
 
 module.exports = router;
