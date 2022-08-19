@@ -12,10 +12,6 @@ router.get('/', (req, res) => {
   res.json(products);
 });
 
-router.get('/filter', (req, res) => {
-  res.send('Filtro');
-});
-
 router.get('/:id', (req, res) => {
   const { id } = req.params; //de todos los parametros solo me importa el id
   const product =service.findOne(id);
@@ -23,32 +19,32 @@ router.get('/:id', (req, res) => {
 });
 
 //Post
-router.post('/', (req, res) => {
+router.post('/add', (req, res) => {
   const body = req.body;
   const newProduct= service.create(body);
   res.status(201).json(newProduct);
 });
 
 //Patch
-router.patch('/:id', (req, res) => {
+router.patch('/update/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
   const product=service.update(id,body);
   res.json(product);
 });
 
-// //Put
-// router.put('/:id', (req, res) => {
-//   const { id } = req.params;
-//   const body = req.body;
-//   const product=service.update(id,body);
-//   res.json(product);
-// });
+//Put
+router.put('/update/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  const product=service.update(id,body);
+  res.json(product);
+});
 
 //Delete
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const { id } = req.params;
-  const product=service.update(id);
+  const product=service.delete(id);
   res.json(product);
 });
 
