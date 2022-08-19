@@ -7,7 +7,7 @@ class SalesService {
   }
 
   generate() {
-    const limit = 100; //uso esto para que me muestre la cantidad que mandan por el url, si no viene nada, que genere 10, hence ||10
+    const limit = 10; //uso esto para que me muestre la cantidad que mandan por el url, si no viene nada, que genere 10, hence ||10
     for (let i = 0; i < limit; i++) {
       this.sales.push({
         id: faker.datatype.uuid(),

@@ -6,50 +6,43 @@ const service = new SalesService();
 
 //Get's
 router.get('/', (req, res) => {
-  const products = service.find();
-  res.json(products);
+  const sales =service.find();
+  res.json(sales);
 });
 
 router.get('/:id', (req, res) => {
   const { id } = req.params; //de todos los parametros solo me importa el id
-  const sale = service.findOne(id);
+  const sale =service.findOne(id);
   res.json(sale);
 });
 
-//Productos de una venta
-router.get('/sales/:sId/products/:pId', (req, res) => {
-  const { sId, pId } = req.params; //de todos los parametros solo me importa el id
-  res.json({
-    sId,
-    pId,
-  });
-});
-
-router.post('/', (req, res) => {
+//Post
+router.post('/add', (req, res) => {
   const body = req.body;
-  const newSale = service.create(body);
+  const newSale= service.create(body);
   res.status(201).json(newSale);
 });
 
 //Patch
-router.patch('/:id', (req, res) => {
+router.patch('/update/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
-  const sale = service.update(id, body);
+  const sale=service.update(id,body);
   res.json(sale);
 });
 
 //Put
-router.put('/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
-  const sale = service.update(id, body);
+  const sale=service.update(id,body);
   res.json(sale);
 });
+
 //Delete
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const { id } = req.params;
-  const sale = service.update(id);
+  const sale=service.delete(id);
   res.json(sale);
 });
 

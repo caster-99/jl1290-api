@@ -7,19 +7,18 @@ class ClientsService {
   }
 
   generate() {
-    const limit = 100; //uso esto para que me muestre la cantidad que mandan por el url, si no viene nada, que genere 10, hence ||10
+    const limit = 10; //uso esto para que me muestre la cantidad que mandan por el url, si no viene nada, que genere 10, hence ||10
     for (let i = 0; i < limit; i++) {
       this.clients.push({
-        id: faker.datatype.uuid(),
-        name: faker.commerce.productName(),
-        address: (faker.address.country())+(" ")+(faker.address.cityName())+(" ")+(faker.address.buildingNumber())
+        id: faker.datatype.number({ min: 1000000 }),
+        name: faker.name.firstName()+(" ")+faker.name.lastName(),
+        address: ((faker.address.country())+(" ")+(faker.address.cityName()))
       });
     }
   }
 
   create(data) {
     const newClient = {
-      id: faker.datatype.uuid(),
       ...data,
     };
     this.clients.push(newClient);
