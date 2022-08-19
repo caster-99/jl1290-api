@@ -1,4 +1,5 @@
 const faker = require('faker');
+const boom = require('@hapi/boom');
 
 class ProductsService {
   constructor() {
@@ -13,6 +14,7 @@ class ProductsService {
         id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
+        stock: parseInt(faker.datatype.number(50)),
       });
     }
   }
@@ -39,9 +41,16 @@ class ProductsService {
   }
 
   findOne(id) {
+    const product = this.products.find((item) => item.id === id);
+    if (!product) {
+      throw boom.notFound('No se encontró el producto.');
+    }
+    if(product.stock==0){
+      throw boom.conflict('No hay stock disponible de este producto.')
+    }
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(this.products.find((item) => item.id === id));
+        resolve(product);
       }, 2000);
     });
   }
@@ -49,7 +58,7 @@ class ProductsService {
   update(id, changes) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw new Error('No se encontró el producto.');
+      throw boom.notFound('No se encontró el producto.');
     }
     return new Promise((resolve) => {
       const product = this.products[index];
@@ -59,20 +68,20 @@ class ProductsService {
       };
       setTimeout(() => {
         resolve(this.products[index]);
-      },2000);
+      }, 2000);
     });
   }
 
   async delete(id) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw new Error('No se encontró el producto.');
+      throw new boom.notFound('No se encontró el producto.');
     }
     return new Promise((resolve) => {
       this.products.splice(index, 1);
-      setTimeout(()=>{
+      setTimeout(() => {
         resolve(id);
-      },2000)
+      }, 2000);
     });
   }
 }

@@ -1,4 +1,5 @@
 const faker = require('faker');
+const boom = require('@hapi/boom');
 
 class ClientsService {
   constructor() {
@@ -44,7 +45,7 @@ class ClientsService {
   update(id, changes) {
     const index = this.clients.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw new Error('No se encontró el cliente.');
+      throw boom.notFound('No se encontró el cliente.');
     }
     return new Promise((resolve) => {
       const sale = this.clients[index];
@@ -61,7 +62,7 @@ class ClientsService {
   delete(id) {
     const index = this.clients.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw new Error('No se encontró el cliente.');
+      throw boom.notFound('No se encontró el cliente.');
     }
     return new Promise((resolve) => {
       this.clients.splice(index, 1);
