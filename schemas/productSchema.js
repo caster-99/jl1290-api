@@ -2,8 +2,8 @@ const Joi = require('joi');
 
 //Cambiar a string cuando vaya a la bd
 const id = Joi.string().uuid();
-const name = Joi.string().alphanum().min(5).max(50);
-const price = Joi.number().positive().precision(2).min(1);
+const name = Joi.string().min(5).max(50);
+const price = Joi.number().precision(2).min(1);
 const stock = Joi.number().integer().min(0);
 
 const createProductSchema = Joi.object({
