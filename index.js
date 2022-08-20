@@ -8,7 +8,7 @@ const  { logErrors, errorHandler,boomErrorHandler } = require('./middlewares/err
 
 app.use(express.json());
 
-const whiteList = ['http://localhost:8080','https://inventariojl1290.com'];
+const whiteList = ['https://inventariojl1290.herokuapp.com/','http://localhost:8080','https://inventariojl1290.com'];
 const options={
   origin:(origin, callback)=>{
     if(whiteList.includes(origin)|| !origin){
