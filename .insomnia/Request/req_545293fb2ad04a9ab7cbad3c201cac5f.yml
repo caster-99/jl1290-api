@@ -1,0 +1,29 @@
+_id: req_545293fb2ad04a9ab7cbad3c201cac5f
+type: Request
+parentId: fld_4e5220b2e3584ef2a10b56135577007b
+modified: 1660961397573
+created: 1647825926754
+url: http://localhost:3000/api/v1/sales/update/df9a6889-8945-423b-ac72-2a522daaf6c7
+name: UPDATE partial sale
+description: ""
+method: PATCH
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"total":4.8
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c42dc71520ea4027978f776b015c75ad
+authentication: {}
+metaSortKey: 300
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

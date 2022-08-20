@@ -1,0 +1,29 @@
+_id: req_dcf18214f4134949923bfc07a4f7df25
+type: Request
+parentId: fld_8bc4b11d91c44fdeb42cfabd1454c3d2
+modified: 1660961133330
+created: 1647825916283
+url: http://localhost:3000/api/v1/clients/update/27948813
+name: UPDATE partial client
+description: ""
+method: PATCH
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name":"Luisa María López"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c42dc71520ea4027978f776b015c75ad
+authentication: {}
+metaSortKey: 300
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

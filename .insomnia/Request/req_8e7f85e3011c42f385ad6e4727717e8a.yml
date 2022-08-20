@@ -1,0 +1,26 @@
+_id: req_8e7f85e3011c42f385ad6e4727717e8a
+type: Request
+parentId: fld_4e5220b2e3584ef2a10b56135577007b
+modified: 1660961347029
+created: 1647826016119
+url: http://localhost:3000/api/v1/sales/6fc58400-5b60-4c8f-92b5-6ac959491579
+name: GET sales
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d7a5d3d1beb1456caef8b83a82b15c7e
+authentication: {}
+metaSortKey: 0
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

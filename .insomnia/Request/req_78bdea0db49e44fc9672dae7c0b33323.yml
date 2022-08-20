@@ -1,0 +1,31 @@
+_id: req_78bdea0db49e44fc9672dae7c0b33323
+type: Request
+parentId: fld_97bc85e2407e4198bd35a1fbe5e7663d
+modified: 1660961314280
+created: 1647824924147
+url: http://localhost:3000/api/v1/products/add
+name: CREATE product
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	 "name":"Filtro de aire",
+    	"price":"464",
+    	"stock":"45"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c92c8df65d26436fa035a097b044721b
+authentication: {}
+metaSortKey: 100
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

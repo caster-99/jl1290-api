@@ -1,0 +1,31 @@
+_id: req_5a950c700c7543d3a79bddb31a23d2fa
+type: Request
+parentId: fld_8bc4b11d91c44fdeb42cfabd1454c3d2
+modified: 1660961062743
+created: 1647826008930
+url: http://localhost:3000/api/v1/clients/add
+name: CREATE client
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"id":"27948813",
+    	"name":"Luisa López",
+    	"address":"Venezuela"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c92c8df65d26436fa035a097b044721b
+authentication: {}
+metaSortKey: 100
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

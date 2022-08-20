@@ -1,0 +1,26 @@
+_id: req_aed574ed5ad840a4bf84b0350e697b1a
+type: Request
+parentId: fld_97bc85e2407e4198bd35a1fbe5e7663d
+modified: 1660961293792
+created: 1647824824300
+url: http://localhost:3000/api/v1/products/e2bcd910-83c2-4891-a175-5915dc5e1095
+name: GET products
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d7a5d3d1beb1456caef8b83a82b15c7e
+authentication: {}
+metaSortKey: 0
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

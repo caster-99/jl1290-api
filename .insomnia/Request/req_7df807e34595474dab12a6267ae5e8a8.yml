@@ -1,0 +1,26 @@
+_id: req_7df807e34595474dab12a6267ae5e8a8
+type: Request
+parentId: fld_8bc4b11d91c44fdeb42cfabd1454c3d2
+modified: 1660946136920
+created: 1647826024280
+url: http://localhost:3000/api/v1/clients/27948813
+name: GET clients
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d7a5d3d1beb1456caef8b83a82b15c7e
+authentication: {}
+metaSortKey: 0
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

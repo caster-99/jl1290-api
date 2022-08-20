@@ -1,0 +1,26 @@
+_id: req_0ad51bfa1cb14d6380bb36a37a4ebeb2
+type: Request
+parentId: fld_4e5220b2e3584ef2a10b56135577007b
+modified: 1660961369746
+created: 1647825898123
+url: http://localhost:3000/api/v1/sales/delete/6fc58400-5b60-4c8f-92b5-6ac959491579
+name: DELETE sale
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_06acc152d04d44f88f28686bacb20374
+authentication: {}
+metaSortKey: 400
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

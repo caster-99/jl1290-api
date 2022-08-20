@@ -1,0 +1,26 @@
+_id: req_19b2fd495afa400f9e430bc0fd708392
+type: Request
+parentId: fld_8bc4b11d91c44fdeb42cfabd1454c3d2
+modified: 1660936009438
+created: 1647825888511
+url: http://localhost:3000/api/v1/clients/delete/27948813
+name: DELETE client
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_06acc152d04d44f88f28686bacb20374
+authentication: {}
+metaSortKey: 400
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

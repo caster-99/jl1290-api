@@ -1,0 +1,30 @@
+_id: req_06051f778af34b2a94868be086c60830
+type: Request
+parentId: fld_4e5220b2e3584ef2a10b56135577007b
+modified: 1660961373913
+created: 1647826000015
+url: http://localhost:3000/api/v1/sales/add
+name: CREATE sale
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"date": "2050-05-15T16:19:19.092Z",
+    	"total":2513
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c92c8df65d26436fa035a097b044721b
+authentication: {}
+metaSortKey: 100
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

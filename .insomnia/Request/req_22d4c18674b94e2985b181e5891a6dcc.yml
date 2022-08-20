@@ -1,0 +1,30 @@
+_id: req_22d4c18674b94e2985b181e5891a6dcc
+type: Request
+parentId: fld_97bc85e2407e4198bd35a1fbe5e7663d
+modified: 1660961315478
+created: 1647825466677
+url: http://localhost:3000/api/v1/products/update/e2bcd910-83c2-4891-a175-5915dc5e1095
+name: UPDATE partial product
+description: ""
+method: PATCH
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name":"Filtrodeaire5464324",
+    	"price":2
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c42dc71520ea4027978f776b015c75ad
+authentication: {}
+metaSortKey: 300
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
