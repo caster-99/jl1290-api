@@ -9,10 +9,10 @@ app.use(express.json());
 
 app.listen(port, () => {
   try {
-    console.log('Port: ' + port);
-    console.log("Conexión exitosa");
+    // console.log('Port: ' + port);
+    // console.log("Conexión exitosa");
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
   }
 
 });
