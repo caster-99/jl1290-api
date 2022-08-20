@@ -1,30 +1,38 @@
 const express = require('express');
-const routerApi = require('./routes');
-const mysql = require('mysql');
-// const { tr } = require('faker/lib/locales');
-
+const routerApi =require('./routes');
+const cors = require('cors');
 const app = express();
-const port =3050;
+const port = process.env.PORT || 3000;
+
+const  { logErrors, errorHandler,boomErrorHandler } = require('./middlewares/errorHandler')
 
 app.use(express.json());
 
-// Conexión MySQL
+const whiteList = ['http://localhost:8080','https://inventariojl1290.com'];
+const options={
+  origin:(origin, callback)=>{
+    if(whiteList.includes(origin)|| !origin){
+      callback(null,true);
+    }else{
+      callback(new Error('No permitido'));
+    }
+  }
+};
+app.use(cors(options));
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '1q2w',
-  database: 'inventario-jl1290',
-});
-
-//Checking conexión
-connection.connect((error) => {
-  if (error) throw error;
-  console.log('Conexión exitosa, servidor activo');
-});
 
 app.listen(port, () => {
-  console.log('Servidor activo en puerto: ' + port);
+  try {
+    console.log('Port: ' + port);
+    console.log("Conexión exitosa");
+  } catch (error) {
+    console.log(error.message);
+  }
+
 });
 
 routerApi(app);
+
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(errorHandler);
