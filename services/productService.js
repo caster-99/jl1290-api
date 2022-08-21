@@ -1,11 +1,11 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
 
-// class ProductsService {
-//   constructor() {
-//     this.products = [];
-//     this.generate();
-//   }
+class ProductsService {
+  constructor() {
+    this.products = [];
+    this.generate();
+  }
 
   generate() {
     const limit = 10; //uso esto para que me muestre la cantidad que mandan por el url, si no viene nada, que genere 10, hence ||10

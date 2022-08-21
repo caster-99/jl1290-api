@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
 
 const ProductsService = require('./../services/productService');
 const service = new ProductsService();
