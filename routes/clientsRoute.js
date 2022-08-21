@@ -33,19 +33,19 @@ router.get(
 
 //GET cliente específico
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  const sql = ` SELECT * FROM clientes WHERE cedula=${id}`;
+// router.get('/:id', (req, res) => {
+//   const { id } = req.params;
+//   const sql = ` SELECT * FROM clientes WHERE cedula=${id}`;
 
-  connection.query(sql, (error, result) => {
-    if (error) throw error;
-    if (result.length > 0) {
-      res.json(result);
-    } else {
-      res.send('No hay resultados');
-    }
-  });
-});
+//   connection.query(sql, (error, result) => {
+//     if (error) throw error;
+//     if (result.length > 0) {
+//       res.json(result);
+//     } else {
+//       res.send('No hay resultados');
+//     }
+//   });
+// });
 
 
 
