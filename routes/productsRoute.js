@@ -85,11 +85,5 @@ router.delete(
   }
 );
 
-// //Delete
-// router.delete('/:id', (req, res) => {
-//   const { id } = req.params;
-//   const product=service.update(id);
-//   res.json(product);
-// });
 
-// module.exports = router;
+ module.exports = router;
