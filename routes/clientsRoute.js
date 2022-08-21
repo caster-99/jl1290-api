@@ -43,7 +43,7 @@ router.post(
 );
 
 //Patch
-router.patch(
+router.put(
   '/update/:id',
   validatorHandler(getClientSchema, 'params'),
   validatorHandler(updateClientSchema, 'body'),
