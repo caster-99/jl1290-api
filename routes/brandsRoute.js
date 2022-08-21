@@ -64,7 +64,7 @@ router.post('/add', (req, res) => {
 });
 
 //Patch
-router.patch('/update/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
